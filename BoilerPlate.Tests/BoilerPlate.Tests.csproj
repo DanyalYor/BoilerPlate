@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BoilerPlate.csproj" />
+    <ProjectReference Include="..\BoilerPlate\BoilerPlate.csproj" />
   </ItemGroup>
 
 </Project>
