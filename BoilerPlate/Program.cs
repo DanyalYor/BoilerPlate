@@ -8,11 +8,26 @@ namespace BoilerPlate
         public static void Main(string[] args)
         {
             Program program = new Program();
-            Console.WriteLine("Please type in a year!");
+            //Console.WriteLine("Please type in a year!");
             string input = Console.ReadLine();
-            int inputInt = Int32.Parse(input);
+            int inputInt = 0;
 
-            Console.WriteLine(program.IsLeapYear(inputInt) ? "yay" : "nay");
+            
+            try{
+                inputInt = Int32.Parse(input);
+            } catch(Exception e){
+                Console.WriteLine("The year must be a number!");
+                return;
+            }
+            
+
+            if(inputInt > 1582)
+            {
+                Console.WriteLine(program.IsLeapYear(inputInt) ? "yay" : "nay");
+            } else{
+                Console.WriteLine("Your year must be greater than the number 1582!");
+            }
+
         }
 
         public bool IsLeapYear(int year)

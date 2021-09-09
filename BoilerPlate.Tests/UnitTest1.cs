@@ -25,7 +25,32 @@ namespace BoilerPlate.Tests
             Assert.True(giveTrue1);
             Assert.True(giveTrue2);
 
-            Console.WriteLine("jdwnajdnajfnekajnncjkadncjkndjkacndjknakjncdjan");
+        }
+
+        [Fact]
+        public void Main_takes_input()
+        {
+            foreach (string correct in new string[] {"2000", "1600"}) {
+                var writer = new StringWriter();
+                Console.SetOut(writer);
+                Console.SetIn(new StringReader(correct));
+
+                Program.Main(new string[0]);
+
+                var output = writer.GetStringBuilder().ToString().Trim();
+                Assert.Equal("yay", output);
+            }
+
+            foreach (string incorrect in new string[] {"2100", "2001", "1655"}) {
+                var writer = new StringWriter();
+                Console.SetOut(writer);
+                Console.SetIn(new StringReader(incorrect));
+
+                Program.Main(new string[0]);
+
+                var output = writer.GetStringBuilder().ToString().Trim();
+                Assert.Equal("nay", output);
+            }   
         }
     }
 }
